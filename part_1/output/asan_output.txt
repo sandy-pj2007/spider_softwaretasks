@@ -1,0 +1,54 @@
+=================================================================
+==725==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x76dca11e0038 at pc 0x7a9ca2f2901f bp 0x7fffcc80a090 sp 0x7fffcc809838
+READ of size 100 at 0x76dca11e0038 thread T0
+    #0 0x7a9ca2f2901e in memcpy ../../../../src/libsanitizer/sanitizer_common/sanitizer_common_interceptors_memintrinsics.inc:117
+    #1 0x64b45b4816c1 in memcpy /usr/include/x86_64-linux-gnu/bits/string_fortified.h:29
+    #2 0x64b45b4816c1 in parse_metadata /mnt/c/Users/sandy/Downloads/cybertask1/parser.c:71
+    #3 0x64b45b4816c1 in xar_parse_buffer /mnt/c/Users/sandy/Downloads/cybertask1/parser.c:234
+    #4 0x64b45b480c57 in main /mnt/c/Users/sandy/Downloads/cybertask1/main.c:64
+    #5 0x7a9ca222a600  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a600) (BuildId: 90ebd03ae9d9f42b23b4eb82fdf70352cf744198)
+    #6 0x7a9ca222a717 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a717) (BuildId: 90ebd03ae9d9f42b23b4eb82fdf70352cf744198)
+    #7 0x64b45b4805a4 in _start (/mnt/c/Users/sandy/Downloads/cybertask1/xarinfo+0x95a4) (BuildId: 0638c8fb19990f27c125093c68eb76942d2d0f93)
+
+0x76dca11e0038 is located 0 bytes after 40-byte region [0x76dca11e0010,0x76dca11e0038)
+allocated by thread T0 here:
+    #0 0x7a9ca2f2b60f in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:67
+    #1 0x64b45b4846a1 in read_file /mnt/c/Users/sandy/Downloads/cybertask1/utils.c:72
+    #2 0x64b45b480be5 in main /mnt/c/Users/sandy/Downloads/cybertask1/main.c:60
+    #3 0x7a9ca222a600  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a600) (BuildId: 90ebd03ae9d9f42b23b4eb82fdf70352cf744198)
+    #4 0x7a9ca222a717 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a717) (BuildId: 90ebd03ae9d9f42b23b4eb82fdf70352cf744198)
+    #5 0x64b45b4805a4 in _start (/mnt/c/Users/sandy/Downloads/cybertask1/xarinfo+0x95a4) (BuildId: 0638c8fb19990f27c125093c68eb76942d2d0f93)
+
+SUMMARY: AddressSanitizer: heap-buffer-overflow /usr/include/x86_64-linux-gnu/bits/string_fortified.h:29 in memcpy
+Shadow bytes around the buggy address:
+  0x76dca11dfd80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x76dca11dfe00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x76dca11dfe80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x76dca11dff00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+  0x76dca11dff80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+=>0x76dca11e0000: fa fa 00 00 00 00 00[fa]fa fa fa fa fa fa fa fa
+  0x76dca11e0080: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x76dca11e0100: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x76dca11e0180: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x76dca11e0200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x76dca11e0280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==725==ABORTING
