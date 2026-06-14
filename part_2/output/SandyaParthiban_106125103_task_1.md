@@ -189,4 +189,4 @@ Two primary flaws were identified and repaired:
 1. Missing cleanup of the license subsystem state.
 2. Lack of AFL++ compiler instrumentation.
 
-After applying these fixes, AFL++ successfully performed guided fuzzing and generated additional coverage. Source-code review also identified a potential stack buffer overflow in the Override chunk processing logic, making it a promising vulnerability candidate for further investigation.
+After applying these fixes, AFL++ successfully performed guided fuzzing and generated additional coverage. Source-code review also identified a potential stack buffer overflow in the Override chunk processing logic, making it a promising vulnerability candidate for further investigation.AFL++ was executed for some minutes using the generated seed corpus. During execution, AFL++ expanded the corpus from 1 initial seed to many interesting test cases and discovered additional execution paths. No crashes were observed during the fuzzing session.
