@@ -15,7 +15,7 @@ The provided project consists of:
 * `gen_corpus.py` – seed corpus generator
 * `Makefile` – build configuration
 
-The README indicated that AFL++ launches successfully but fails to make meaningful fuzzing progress. Therefore, the first step was to inspect both the harness and build system.
+It was stated that AFL++ launches successfully but fails to make meaningful fuzzing progress. Therefore, the first step was to inspect both the harness and build system.
 
 ---
 
@@ -50,7 +50,7 @@ inside `license.c`.
 
 ### Impact
 
-Because the license subsystem was never cleaned up after execution, subsequent fuzzing iterations could encounter inconsistent initialization behaviour. This can reduce fuzzing effectiveness and prevent proper state reset between executions.
+Because the license state was never cleared, it makes the reset of state through subsequent fuzzing iterations reducing the fuzzing efficiency.
 
 ### Fix
 
